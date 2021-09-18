@@ -9,7 +9,12 @@
 </head>
 
 <body>
+    <br>
     <b>Department Page</b>
+    <p>DEPARTMENT : {{$dept}} </p>
+    <p>BATCH : {{$batch}} </p>
+    <p>Section : {{$sec}} </p>
+    <br>
 </body>
 
 </html>
