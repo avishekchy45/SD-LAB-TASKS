@@ -14,24 +14,29 @@
         <b>Student Home</b>
         <div class="row">
             <div class="col-6 offset-md-3">
-                <h2>Add Student</h2>
-                <form action="{{ URL::to('addstudent')}}" method="post">
+                <h2>Update Student</h2>
+                @if(Session::has('msg'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('msg')}}
+                </div>
+                @endif
+                <form action="{{ URL::to('updatefinal/'.$data2->id)}}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="">Full Name</label>
-                        <input type="text" class="form-control" name="name" id="">
+                        <input type="text" class="form-control" name="name" id="" value="{{ $data2->NAME }}">
                     </div>
                     <div class="form-group">
                         <label for="">Department</label>
                         <select class="form-control" name="dept" id="">
                             <option value="">SELECT TYPE</option>
-                            <option value="CSE">CSE</option>
-                            <option value="EEE">EEE</option>
-                            <option value="MATH">MATH</option>
+                            <option value="CSE" {{$data2->department=='CSE'?'selected':''}}>CSE</option>
+                            <option value="EEE" {{$data2->department=='EEE'?'selected':''}}>EEE</option>
+                            <option value="MATH" {{$data2->department=='MATH'?'selected':''}}>MATH</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <br><button type="submit" class="btn btn-primary">Submit</button>
+                        <br><button type="submit" class="btn btn-primary">Update</button>
                         <a href="{{ URL::to('listofstu')}}" class="btn btn-primary">List of students</a><br>
                     </div>
             </div>

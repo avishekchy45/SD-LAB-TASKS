@@ -31,6 +31,7 @@ class HomeController extends Controller
             'name' => $name,
             'department' => $department
         ]);
+        return redirect()->back();
     }
     public function studentlist(request $req)
     {
@@ -38,5 +39,26 @@ class HomeController extends Controller
             ->select('id', 'name as full_name', 'department')
             ->get();
         return view('others.studentlist', compact('data'));
+    }
+    public function update($id)
+    {
+        $data2 = DB::table('students')
+            ->where('id', '=', $id)
+            ->first();
+        return view('others.updatestudent', compact('data2'));
+    }
+    public function updatefinal(request $req, $id)
+    {
+        $name = $req->name;
+        $department = $req->dept;
+        $data3 = DB::table('students')
+            ->where('id', $id)
+            ->update(['NAME' =>  $name, 'department' =>  $department]);
+        return redirect()->back()->with('msg', 'Updated');
+    }
+    public function delete($id)
+    {
+        DB::table('students')->where('id', '=', $id)->delete();
+        return redirect()->back()->with('msg', 'Deleted');
     }
 }

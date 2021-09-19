@@ -45,3 +45,6 @@ Route::get('/home/{department}/{batch}/{section?}', function ($dept, $batch, $se
 Route::get('/home/{department}/{batch}/{section?}', [HomeController::class, 'department']);
 Route::post('/addstudent', [HomeController::class, 'studentadd']);
 Route::get('/listofstu', [HomeController::class, 'studentlist']);
+Route::get('/update/{id}', [HomeController::class, 'update']);
+Route::post('/updatefinal/{id}', [HomeController::class, 'updatefinal']);
+Route::get('/delete/{id}', [HomeController::class, 'delete']);
