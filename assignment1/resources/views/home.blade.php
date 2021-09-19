@@ -11,25 +11,24 @@
 
 <body>
     <div class="container">
-        <br><a href="{{ URL::to('listofem')}}" class="btn btn-secondary">All Employees</a><br><br>
+        <br><a href="{{ URL::to('listofem')}}" class="btn btn-secondary">All Employees</a>
         <a href="" class="btn btn-secondary">Create New Employee</a><br><br>
         <div class="row">
             <div class="col">
                 <form action="{{ URL::to('addemployee')}}" method="post">
                     {{ csrf_field() }}
-
                     <div class="mb-3">
                         <label for="" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="" aria-describedby="" name="name" required>
+                        <input type="text" class="form-control" id="" aria-describedby="" name="name" placeholder="Enter Name" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="" aria-describedby="emailHelp" name="email">
+                        <input type="email" class="form-control" id="" aria-describedby="emailHelp" name="email" placeholder="Enter Email">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Salary</label>
-                        <input type="text" class="form-control" id="" aria-describedby="" name="salary">
+                        <input type="text" class="form-control" id="" aria-describedby="" name="salary" placeholder="Enter Salary">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Birth Date</label>
@@ -69,7 +68,9 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>

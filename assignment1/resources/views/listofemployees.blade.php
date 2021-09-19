@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        <br><a href="{{ URL::to('listofem')}}" class="btn btn-secondary">All Employees</a><br><br>
+        <br><a href="{{ URL::to('listofem')}}" class="btn btn-secondary">All Employees</a>
         <a href="{{ URL::to('/')}}" class="btn btn-secondary">Create New Employee</a><br><br>
         <div class="row">
             <div class="col">
@@ -45,7 +45,7 @@
                             <td>{{$value->salary}}</td>
                             <td>{{$value->date_of_birth}}</td>
                             <td>{{$value->department}}</td>
-                            <td>{{$value->active}}</td>
+                            <td>{{$value->active=='1'?'YES':'NO'}}</td>
                             <td>{{$value->gender}}</td>
                             <td>
                                 <a href="{{ URL::to('update/'.$value->id)}}" class="btn btn-warning btn-sm">Update</a>
@@ -55,7 +55,6 @@
                                 <div class="modal" id="myModal{{$value->id}}">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-
                                             <!-- Modal Header -->
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Delete?</h4>
@@ -79,7 +78,7 @@
                         @endforeach
                         @else
                         <tr>
-                            <td colspan="3">No Student Found</td>
+                            <td colspan="3">No Employee Found</td>
                         </tr>
                         @endif
                     </tbody>

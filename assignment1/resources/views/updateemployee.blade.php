@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <br><a href="{{ URL::to('listofem')}}" class="btn btn-secondary">All Employees</a><br><br>
+        <br><a href="{{ URL::to('listofem')}}" class="btn btn-secondary">All Employees</a>
         <a href="/" class="btn btn-secondary">Create New Employee</a><br><br>
         <div class="row">
             <div class="col">
@@ -72,7 +72,9 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
