@@ -31,7 +31,7 @@
                         <th>Actions</th>
                     </thead>
                     <tbody>
-                        @if($data)
+                        @if($data->count())
                         @foreach($data as $value)
                         <tr>
                             <td>{{$value->id}}</td>
@@ -70,8 +70,8 @@
                         </tr>
                         @endforeach
                         @else
-                        <tr>
-                            <td colspan="3">No Student Found</td>
+                        <tr class="text-center">
+                            <td colspan="4">No Student Found</td>
                         </tr>
                         @endif
                     </tbody>

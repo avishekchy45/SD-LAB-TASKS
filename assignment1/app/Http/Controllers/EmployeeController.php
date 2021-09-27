@@ -39,7 +39,7 @@ class EmployeeController extends Controller
             'active' => $req->status,
             'gender' => $req->gender
         ]);
-        return redirect('/listofem');
+        return redirect('/listofem')->with('successmsg', 'Suuccessfully Created New Account');
     }
     public function update($id)
     {
@@ -66,13 +66,14 @@ class EmployeeController extends Controller
                 'date_of_birth' => $date_of_birth,
                 'department' => $department,
                 'active' => $active,
-                'gender' => $gender
+                'gender' => $gender,
+                'updated_at' => now()
             ]);
-        return redirect()->back()->with('msg', 'Updated');
+        return redirect()->back()->with('successmsg', 'Suuccessfully Updated Account Information');
     }
     public function delete($id)
     {
         DB::table('employees')->where('id', '=', $id)->delete();
-        return redirect()->back()->with('msg', 'Deleted');
+        return redirect()->back()->with('errormsg', 'Suuccessfully Deleted Account');
     }
 }

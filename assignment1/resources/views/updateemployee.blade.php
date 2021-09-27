@@ -15,9 +15,13 @@
         <a href="/" class="btn btn-secondary">Create New Employee</a><br><br>
         <div class="row">
             <div class="col">
-                @if(Session::has('msg'))
+                @if(Session::has('errormsg'))
+                <div class="alert alert-danger" role="alert">
+                    {{Session::get('errormsg')}}
+                </div>
+                @elseif(Session::has('successmsg'))
                 <div class="alert alert-success" role="alert">
-                    {{Session::get('msg')}}
+                    {{Session::get('successmsg')}}
                 </div>
                 @endif
                 <form action="{{ URL::to('updatefinal/'.$data2->id)}}" method="post">
@@ -54,13 +58,13 @@
                     <div class="mb-3">
                         <label class="form-label" for="">Gender</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" {{$data2->gender=='male'?'checked':''}}>
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male" {{$data2->gender=='Male'?'checked':''}}>
                             <label class="form-check-label" for="male">
                                 Male
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female" {{$data2->gender=='female'?'checked':''}}>
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female" {{$data2->gender=='Female'?'checked':''}}>
                             <label class="form-check-label" for="female">
                                 Female
                             </label>
@@ -73,7 +77,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>

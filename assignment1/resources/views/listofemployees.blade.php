@@ -18,9 +18,13 @@
         <a href="{{ URL::to('/')}}" class="btn btn-secondary">Create New Employee</a><br><br>
         <div class="row">
             <div class="col">
-                @if(Session::has('msg'))
+                @if(Session::has('errormsg'))
                 <div class="alert alert-danger" role="alert">
-                    {{Session::get('msg')}}
+                    {{Session::get('errormsg')}}
+                </div>
+                @elseif(Session::has('successmsg'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('successmsg')}}
                 </div>
                 @endif
                 <table class="table table-primary table-stripe">
@@ -36,7 +40,7 @@
                         <th>Actions</th>
                     </thead>
                     <tbody>
-                        @if($data)
+                        @if($data->count())
                         @foreach($data as $value)
                         <tr>
                             <td>{{$value->id}}</td>
@@ -57,18 +61,17 @@
                                         <div class="modal-content">
                                             <!-- Modal Header -->
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Delete?</h4>
+                                                <h4 class="modal-title">Delete Confirmation</h4>
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
-
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                Are you sure u want to Delete {{$value->name}}?
+                                                Are you sure you want to Delete {{$value->name}}?
                                             </div>
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                                                <a href="{{ URL::to('delete/'.$value->id)}}" class="btn btn-danger">Delete</a>
+                                                <a href="" class="btn btn-success">No</a>
+                                                <a href="{{ URL::to('delete/'.$value->id)}}" class="btn btn-danger">Yes</a>
                                             </div>
                                         </div>
                                     </div>
@@ -77,8 +80,8 @@
                         </tr>
                         @endforeach
                         @else
-                        <tr>
-                            <td colspan="3">No Employee Found</td>
+                        <tr class="text-center">
+                            <td colspan="9">No Employee Found</td>
                         </tr>
                         @endif
                     </tbody>
