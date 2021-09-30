@@ -27,6 +27,7 @@
                         <th>Email</th>
                         <th>Birh Date</th>
                         <th>Gender</th>
+                        <th>Department</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
@@ -38,6 +39,7 @@
                             <td>{{$value->email}}</td>
                             <td>{{$value->birth_date}}</td>
                             <td>{{$value->gender}}</td>
+                            <td>{{$value->dept_name}}</td>
                             <td>
                                 <a href="{{ URL::to('editteacher/'.$value->id)}}" class="btn btn-warning btn-sm">Update</a>
                                 <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal{{$value->id}}">Delete</a>
@@ -55,7 +57,7 @@
 
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                Delete {{$value->full_name}}?
+                                                Delete {{$value->name}}?
                                             </div>
 
                                             <!-- Modal footer -->
@@ -71,7 +73,7 @@
                         @endforeach
                         @else
                         <tr class="text-center">
-                            <td colspan="6">No Teacher Found</td>
+                            <td colspan="7">No Teacher Found</td>
                         </tr>
                         @endif
                     </tbody>

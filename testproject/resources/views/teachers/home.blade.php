@@ -45,6 +45,15 @@
                             <label class="form-check-label" for="other"> Other </label>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="">Department</label>
+                        <select class="form-control" name="dept" id="">
+                            <option value="">SELECT DEPARTMENT</option>
+                            @foreach($dept as $dept)
+                            <option value="{{ $dept->id }}">{{ $dept->dept_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group text-center">
                         <br><button type="submit" class="btn btn-primary">Submit</button>
                         <a href="{{ URL::to('listoftea')}}" class="btn btn-primary">List of Teachers</a><br>

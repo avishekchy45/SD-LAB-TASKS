@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Teacher;
 
 class TeacherController extends Controller
 {
     public function teacherhome()
     {
-        return view('teachers.home');
+        $dept = DB::table('departments')
+        ->select('id', 'dept_name')
+        ->get();
+        return view('teachers.home',compact('dept'));
     }
     public function teacheradd(Request $r)
     {
@@ -18,12 +22,17 @@ class TeacherController extends Controller
         $obj->email = $r->email;
         $obj->birth_date = $r->dob;
         $obj->gender = $r->gender;
+        $obj->dept_id = $r->dept;
         $obj->save(); //ORM = Object Relational Mapping; Eloquent
         return redirect('/listoftea');
     }
     public function teacherlist()
     {
-        $tea = Teacher::all();
+        //$tea = Teacher::all();
+        $tea = DB::table('teachers as t')
+            ->join('departments', 't.dept_id', '=', 'departments.id')
+            ->select('t.*', 'departments.dept_name')
+            ->get();
         return view('teachers.teacherlist', compact('tea'));
     }
     public function editteacher($id)
@@ -43,7 +52,7 @@ class TeacherController extends Controller
     }
     public function deleteteacher($id)
     {
-        $obj =Teacher::find($id);
+        $obj = Teacher::find($id);
         $obj->delete();
         return redirect()->back()->with('msg', 'Suuccessfully Deleted Account');
     }
