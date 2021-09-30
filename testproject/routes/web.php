@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeacherController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,3 +49,10 @@ Route::get('/listofstu', [HomeController::class, 'studentlist']);
 Route::get('/update/{id}', [HomeController::class, 'update']);
 Route::post('/updatefinal/{id}', [HomeController::class, 'updatefinal']);
 Route::get('/delete/{id}', [HomeController::class, 'delete']);
+
+Route::get('/teacher', [TeacherController::class, 'teacherhome']);
+Route::post('/addteacher', [TeacherController::class, 'teacheradd']);
+Route::get('/listoftea', [TeacherController::class, 'teacherlist']);
+Route::get('/editteacher/{id}', [TeacherController::class, 'editteacher']);
+Route::post('/updateteacher/{id}', [TeacherController::class, 'updateteacher']);
+Route::get('/deleteteacher/{id}', [TeacherController::class, 'deleteteacher']);
