@@ -11,16 +11,24 @@ class TeacherController extends Controller
     public function teacherhome()
     {
         $dept = DB::table('departments')
-        ->select('id', 'dept_name')
-        ->get();
-        return view('teachers.home',compact('dept'));
+            ->select('id', 'dept_name')
+            ->get();
+        return view('teachers.home', compact('dept'));
     }
     public function teacheradd(Request $r)
     {
+        $validated = $r->validate([
+            'name' => 'required',
+            'email' => 'required|Email|unique:teachers,email',
+            'birth_date' => 'date|before_or_equal:now',
+            //'birth_date' => 'date|before:-13 years',
+            'gender' => 'required|in:"Male", "Female", "Other"',
+            'dept' => 'required|exists:departments,id',
+        ]);
         $obj = new Teacher();
         $obj->name = $r->name;
         $obj->email = $r->email;
-        $obj->birth_date = $r->dob;
+        $obj->birth_date = $r->birth_date;
         $obj->gender = $r->gender;
         $obj->dept_id = $r->dept;
         $obj->save(); //ORM = Object Relational Mapping; Eloquent
