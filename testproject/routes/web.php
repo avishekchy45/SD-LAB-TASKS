@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,3 +57,9 @@ Route::get('/listoftea', [TeacherController::class, 'teacherlist']);
 Route::get('/editteacher/{id}', [TeacherController::class, 'editteacher']);
 Route::post('/updateteacher/{id}', [TeacherController::class, 'updateteacher']);
 Route::get('/deleteteacher/{id}', [TeacherController::class, 'deleteteacher']);
+
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/logincheck', [AuthController::class, 'logincheck']);
+Route::group(['middleware' => 'checkloggedin'], function () {
+    Route::get('/dashboard', [AuthController::class, 'dashboard']);
+});

@@ -58,7 +58,8 @@ class HomeController extends Controller
     }
     public function delete($id)
     {
-        DB::table('students')->where('id', '=', $id)->delete();
+        DB::table('students')
+            ->where('id', '=', $id)->delete();
         return redirect()->back()->with('msg', 'Deleted');
     }
 }

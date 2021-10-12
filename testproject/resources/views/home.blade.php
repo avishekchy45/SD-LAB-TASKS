@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <b>New File</b>
+    <b>Dashboard</b>
+    <h4> Your Role : {{ Session('userrole') }}</h4>
+    <h4> Your e-mail : {{ Session('username') }}</h4>
 
 </body>
 
