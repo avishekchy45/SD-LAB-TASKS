@@ -15,6 +15,11 @@
         <div class="row">
             <div class="col-6 offset-md-3">
                 <h2>Add Student</h2>
+                @if(Session::has('msg'))
+                <div class="alert alert-danger" role="alert">
+                    {{Session::get('msg')}}
+                </div>
+                @endif
                 <form action="{{ URL::to('addstudent')}}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">

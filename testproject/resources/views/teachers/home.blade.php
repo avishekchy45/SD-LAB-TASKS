@@ -15,6 +15,11 @@
         <div class="row">
             <div class="col-6 offset-md-3">
                 <h2>Add Teacher</h2>
+                @if(Session::has('msg'))
+                <div class="alert alert-danger" role="alert">
+                    {{Session::get('msg')}}
+                </div>
+                @endif
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
