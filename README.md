@@ -1,11 +1,11 @@
-# SD-ASSIGNMENT
+# SD-LAB-TASKS
 
 ##### This repository is for "Software Development" lab tasks and assignments
 ---
 
 Course Code: CSE 338(V3)
 
-Course Name: Software Development
+Course Title: Software Development
 
 ---
 
