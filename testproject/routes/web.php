@@ -65,3 +65,10 @@ Route::group(['middleware' => 'checkloggedin'], function () {
         Route::get('/deleteteacher/{id}', [TeacherController::class, 'deleteteacher']);
     });
 });
+
+Route::get('/admin', function () {
+    return view('admin/pages/adminhome');
+});
+Route::get('/tables', function () {
+    return view('admin/pages/tables');
+});
