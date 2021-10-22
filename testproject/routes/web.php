@@ -72,3 +72,6 @@ Route::get('/admin', function () {
 Route::get('/tables', function () {
     return view('admin/pages/tables');
 });
+Route::get('/register', function () {
+    return view('admin/pages/signup');
+});
