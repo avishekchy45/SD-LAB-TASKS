@@ -75,3 +75,6 @@ Route::get('/tables', function () {
 Route::get('/register', function () {
     return view('admin/pages/signup');
 });
+
+Route::get('/upload', [HomeController::class, 'imageupload']);
+Route::post('/uploadconfirm', [HomeController::class, 'uploadconfirm']);

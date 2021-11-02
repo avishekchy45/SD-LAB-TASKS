@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
+use App\Models\ImageModel;
 
 class HomeController extends Controller
 {
@@ -62,4 +64,36 @@ class HomeController extends Controller
             ->where('id', '=', $id)->delete();
         return redirect()->back()->with('msg', 'Deleted');
     }
+
+    public function imageupload()
+    {
+        $images = ImageModel::all();
+        return view('imageupload', compact('images'));
+    }
+
+    public function uploadconfirm(request $req)
+    {
+        $this->validate($req, [
+            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+
+        $originalImage = $req->file('filename');
+        $name_ext = $originalImage->getClientOriginalName();
+        $name_ext_arr = explode(".", $name_ext);
+        $only_ext = end($name_ext_arr);
+        $name = time() . rand() . "." . $only_ext;
+
+        $Image = Image::make($originalImage);
+        $Path = public_path() . '/images/';
+        $Image->save($Path . $name);
+
+        $obj = new ImageModel();
+        $obj->alttext = "IMAGE";
+        $obj->filename = $name;
+        $obj->save();
+
+        return back()->with('successmsg', 'Your images has been successfully Upload');
+        // return redirect()->back()->with('msg', 'Updated');
+    }
+    
 }
