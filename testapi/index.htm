@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+
+<body>
+    <h2>API</h2>
+    <select name="" id="users">
+        <!-- <option value=""> </option> -->
+    </select>
+    <div>
+        <h3>Available Departments</h3>
+        <p>ID: <span id="id"></span></p>
+        <p>Department: <span id="dept"></span></p>
+    </div>
+
+    <div>
+        <h3>Add Department</h3>
+        <form id="form1">
+            <input type="text" placeholder="Enter Department" name="" id="newdept">
+            <input type="submit" value="Add">
+            <!-- <button type="submit">Add</button> -->
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/departmentsapi",
+                success: function (result) {
+                    // console.log(result)
+                    var departments = result.data;
+                    $.each(departments, function () {
+                        $("#users").append($("<option/>").val(this.id).text(this.dept_name));
+                    });
+                }
+            });
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#users").change(function () {
+                var $option = $(this).find('option:selected');
+                var value = $option.val();
+                var text = $option.text();
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/departmentsapi/" + value,
+                    success: function (result) {
+                        // console.log(result);
+                        var details = result.data;
+                        $("#id").text(details.id);
+                        $("#dept").text(details.dept_name);
+                    }
+                });
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#form1").submit(function (event) {
+                event.preventDefault();
+                // console.log($("#newdept").val());
+                var formdata = {
+                    dept_name: $("#newdept").val()
+                };
+                // console.log(formdata);
+                $.ajax({
+                    type: "POST",
+                    url: "http://127.0.0.1:8000/api/storedepartment/",
+                    data: formdata,
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+        })
+    </script>
+
+</body>
+
+</html>
