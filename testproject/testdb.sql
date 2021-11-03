@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 12:55 AM
+-- Generation Time: Nov 03, 2021 at 10:55 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -87,10 +87,10 @@ CREATE TABLE `image_models` (
 --
 
 INSERT INTO `image_models` (`id`, `filename`, `alttext`, `created_at`, `updated_at`) VALUES
-(1, '1635879374789022716.jpg', 'IMAGE', '2021-11-02 12:56:14', '2021-11-02 12:56:14'),
-(2, '1635879723159103369.jpg', 'IMAGE', '2021-11-02 13:02:03', '2021-11-02 13:02:03'),
-(3, '1635880578334503009.jpg', 'IMAGE', '2021-11-02 13:16:19', '2021-11-02 13:16:19'),
-(4, '1635880585258001223.png', 'IMAGE', '2021-11-02 13:16:26', '2021-11-02 13:16:26');
+(1, '1635879374789022716.jpg', 'IMAGE1', '2021-11-02 12:56:14', '2021-11-02 12:56:14'),
+(2, '1635879723159103369.jpg', 'IMAGE2', '2021-11-02 13:02:03', '2021-11-02 13:02:03'),
+(3, '1635880578334503009.jpg', 'IMAGE3', '2021-11-02 13:16:19', '2021-11-02 13:16:19'),
+(4, '1635880585258001223.png', 'IMAGE4', '2021-11-02 13:16:26', '2021-11-02 13:16:26');
 
 -- --------------------------------------------------------
 
@@ -334,7 +334,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `image_models`
 --
 ALTER TABLE `image_models`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `logins`

@@ -18,7 +18,7 @@
 <body>
 
     <div class="container">
-        <h3 class="jumbotron">Laravel Image Intervention </h3>
+        <h3 class="jumbotron">Laravel Image Intervention with Helper Function</h3>
         @if(Session::has('successmsg'))
         <div class="alert alert-success" role="alert">
             {{Session::get('successmsg')}}
@@ -33,22 +33,6 @@
             </ul>
         </div>
         @endif
-        <!-- <form method="post" action="{{ URL::to('uploadconfirm')}}" enctype="multipart/form-data">
-            @csrf
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="form-group col-md-4">
-                    <input type="file" name="filename" class="form-control" accept="image/*" id="image">
-                    <img src="#" alt="" id="preview" width="145px" height="145px" hidden />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="form-group col-md-4">
-                    <button type="submit" class="btn btn-success" style="margin-top:10px">Upload Image</button>
-                </div>
-            </div>
-        </form> -->
     </div><br>
 
     <div class="container">
@@ -59,19 +43,9 @@
         @endif
     </div><br>
 
-    <!-- <script>
-        image.onchange = evt => {
-            const [file] = image.files
-            if (file) {
-                preview.hidden = false;
-                preview.src = URL.createObjectURL(file)
-            }
-        }
-    </script> -->
-
     <!-- Multiple Image Upload -->
     <div class="container">
-        <form action="{{ URL::to('multiupload')}}" method="post" enctype="multipart/form-data">
+        <form action="{{ URL::to('multiuploadbyhelper')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-md-4"></div>

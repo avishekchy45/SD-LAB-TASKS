@@ -118,4 +118,14 @@ class HomeController extends Controller
         }
         return back()->with('successmsg', 'Your images has been successfully Uploaded');
     }
+    public function helperupload()
+    {
+        $images = ImageModel::all();
+        return view('helperimageupload', compact('images'));
+    }
+    public function multiuploadbyhelper(request $req)
+    {
+        if (helperupload($req))
+            return back()->with('successmsg', 'Your images has been successfully Uploaded');
+    }
 }
