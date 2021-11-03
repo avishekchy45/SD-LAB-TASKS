@@ -73,9 +73,9 @@ class HomeController extends Controller
 
     public function uploadconfirm(request $req)
     {
-        $this->validate($req, [
-            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
-        ]);
+        // $this->validate($req, [
+        //     'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
+        // ]);
 
         $originalImage = $req->file('filename');
         $name_ext = $originalImage->getClientOriginalName();
@@ -92,8 +92,30 @@ class HomeController extends Controller
         $obj->filename = $name;
         $obj->save();
 
-        return back()->with('successmsg', 'Your images has been successfully Upload');
+        return back()->with('successmsg', 'Your image has been successfully Uploaded');
         // return redirect()->back()->with('msg', 'Updated');
     }
-    
+    public function multiupload(request $req)
+    {
+        // $this->validate($req, [
+        //     'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
+        // ]);
+        $images = $req->file('filename');
+        foreach ($images as $originalImage) {
+            $name_ext = $originalImage->getClientOriginalName();
+            $name_ext_arr = explode(".", $name_ext);
+            $only_ext = end($name_ext_arr);
+            $name = time() . rand() . "." . $only_ext;
+
+            $Image = Image::make($originalImage);
+            $Path = public_path() . '/images/';
+            $Image->save($Path . $name);
+
+            $obj = new ImageModel();
+            $obj->alttext = "IMAGE";
+            $obj->filename = $name;
+            $obj->save();
+        }
+        return back()->with('successmsg', 'Your images has been successfully Uploaded');
+    }
 }

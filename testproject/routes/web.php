@@ -78,3 +78,4 @@ Route::get('/register', function () {
 
 Route::get('/upload', [HomeController::class, 'imageupload']);
 Route::post('/uploadconfirm', [HomeController::class, 'uploadconfirm']);
+Route::post('/multiupload', [HomeController::class, 'multiupload']);
