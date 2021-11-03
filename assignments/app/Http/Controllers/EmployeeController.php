@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
-    public function home()
+    public function employeeform()
     {
-        return view('home');
+        return view('employeeform');
     }
     public function listofem()
     {
