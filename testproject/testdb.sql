@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 10:55 PM
+-- Generation Time: Nov 05, 2021 at 04:18 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -50,7 +50,8 @@ INSERT INTO `departments` (`id`, `dept_name`, `created_at`, `updated_at`) VALUES
 (9, 'jlcc', '2021-10-12 07:11:23', '2021-10-12 07:11:23'),
 (10, 'nzxo', '2021-10-12 07:11:23', '2021-10-12 07:11:23'),
 (15, 'EEE', '2021-11-02 15:02:52', '2021-11-02 15:02:52'),
-(34, 'new45', '2021-11-02 17:41:24', '2021-11-02 17:41:24');
+(34, 'new45', '2021-11-02 17:41:24', '2021-11-02 17:41:24'),
+(35, 'math', '2021-11-03 22:55:34', '2021-11-03 22:55:34');
 
 -- --------------------------------------------------------
 
@@ -322,7 +323,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -334,7 +335,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `image_models`
 --
 ALTER TABLE `image_models`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `logins`

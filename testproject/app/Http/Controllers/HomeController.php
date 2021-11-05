@@ -125,7 +125,20 @@ class HomeController extends Controller
     }
     public function multiuploadbyhelper(request $req)
     {
-        if (helperupload($req))
-            return back()->with('successmsg', 'Your images has been successfully Uploaded');
+        // $name = "default";
+        $images = $req->file('filename');
+        foreach ($images as $originalImage) {
+            
+            $name = helperupload($originalImage);
+            $Image = Image::make($originalImage);
+            $Path = public_path() . '/images/';
+            $Image->save($Path . $name);
+            $alttext = "IMAGE";
+            // $filename = $name;
+            $image_model = new ImageModel();
+            $image_model->newupload($alttext,$name);
+            
+        }
+        return back()->with('successmsg', 'Your images has been successfully Uploaded');
     }
 }
