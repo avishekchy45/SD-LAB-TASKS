@@ -3,9 +3,15 @@
 ##### This repository is for "Software Development" lab tasks and assignments
 ---
 
-Course Code: CSE 338(V3)
+**Course Code** : CSE 338(V3)
 
-Course Title: Software Development
+**Course Title** : Software Development
+
+**Course Teacher** : Anik Sen
+
+**Session** : Spring 2021
+
+**Course Description** : This is the first practicum course in the Computer Science & Engineering program. It provides experience in an on-going software development project. A student at this level will be given an assignment in a team similar to that of a new hire in industry. The software development project will require the student to apply industry best practices in completing an assignment for the project.
 
 ---
 
